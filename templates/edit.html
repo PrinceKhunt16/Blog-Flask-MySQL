@@ -1,0 +1,73 @@
+{% extends "layout.html" %} {% block body %}
+
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='img/home-bg.jpg') }}')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Admin Panel</h1>
+                    <span class="subheading">A Blog Theme by Start Bootstrap</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container mb-4">
+    <h1 class="mb-4">Actions</h1>
+    <a href="/dashboard" class="btn btn-primary">Dashboard Home</a>
+    <a href="/logout" class="btn btn-primary">Logout</a>
+    <hr>
+</div>
+<div class="container">
+    <h1>Write / Edit Blog</h1>
+    <form name="sentMessage" id="editForm" method="post" novalidate action="/edit/{{sno}}">
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                <label>Title</label>
+                <input type="text" class="form-control" placeholder="Title" id="title" name="title" required value="{{post.title}}"
+                    data-validation-required-message="Please enter title.">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                <label>Tagline</label>
+                <input type="text" class="form-control" placeholder="Tagline" id="tagline" name="tagline" required value="{{post.tagline}}"
+                    data-validation-required-message="Please enter tagline.">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+                <label>Slug</label>
+                <input type="text" class="form-control" placeholder="Slug" id="slug" name="slug" required value="{{post.slug}}"
+                    data-validation-required-message="Please enter slug.">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+                <label>Image File</label>
+                <input type="text" class="form-control" placeholder="Image File" id="img_file" name="img_file" required value="{{post.img_file}}"
+                    data-validation-required-message="Please enter slug.">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                <label>Content</label>
+                <textarea rows="5" class="form-control" placeholder="Content" id="content" name="content" required
+                    data-validation-required-message="Please enter content.">{{post.content}}</textarea>
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+        <br>
+        <div id="success"></div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" id="sendMessageButton">Submit</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
